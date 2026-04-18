@@ -1,0 +1,25 @@
+/* Students Page Specific Styles */
+
+.modal-content {
+    max-width: 600px;
+}
+
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.search-box {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .action-bar {
+        flex-direction: column;
+    }
+
+    .search-box {
+        margin-left: 0;
+        width: 100%;
+    }
+}

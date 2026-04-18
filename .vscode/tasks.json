@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile Backend",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/c", "cd \"college management project\\college management project\" && cd backend && compile.bat"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Backend",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/c", "cd \"college management project\\college management project\" && cd backend && run.bat"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Full System",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/c", "cd \"college management project\\college management project\" && cd backend && start.bat"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Open Frontend",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/c", "cd \"college management project\\college management project\" && start frontend\\index.html"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

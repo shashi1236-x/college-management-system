@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Grades - College Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grades.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>College Management System</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="students.html" class="nav-link">Students</a></li>
+                <li><a href="courses.html" class="nav-link">Courses</a></li>
+                <li><a href="instructors.html" class="nav-link">Instructors</a></li>
+                <li><a href="enrollments.html" class="nav-link">Enrollments</a></li>
+                <li><a href="grades.html" class="nav-link active">Grades</a></li>
+                <li><a href="reports.html" class="nav-link">Reports</a></li>
+                <li><a href="#" class="nav-link logout" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <h3>Quick Access</h3>
+                <a href="students.html" class="menu-item">
+                    <span class="icon">👥</span> Manage Students
+                </a>
+                <a href="courses.html" class="menu-item">
+                    <span class="icon">📚</span> Manage Courses
+                </a>
+                <a href="instructors.html" class="menu-item">
+                    <span class="icon">👨‍🏫</span> Manage Instructors
+                </a>
+                <a href="enrollments.html" class="menu-item">
+                    <span class="icon">📝</span> Manage Enrollments
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>Grade Management</h2>
+
+            <!-- Add Grade Button -->
+            <div class="action-bar">
+                <button class="btn btn-primary" onclick="openAddGradeForm()">+ Add Grade</button>
+                <input type="text" id="searchInput" placeholder="Search grades..." class="search-box">
+            </div>
+
+            <!-- Add/Edit Grade Form -->
+            <div id="gradeFormModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddGradeForm()">&times;</span>
+                    <h3>Grade Information</h3>
+                    <form onsubmit="submitGrade(event)">
+                        <div class="form-group">
+                            <label for="gradeId">Grade ID</label>
+                            <input type="text" id="gradeId" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeEnrollment">Enrollment *</label>
+                            <select id="gradeEnrollment" required>
+                                <option value="">Select an enrollment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeMidterm">Midterm Grade (0-100) *</label>
+                            <input type="number" id="gradeMidterm" min="0" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeFinal">Final Grade (0-100) *</label>
+                            <input type="number" id="gradeFinal" min="0" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeAssignment">Assignment Grade (0-100)</label>
+                            <input type="number" id="gradeAssignment" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeAttendance">Attendance (%)</label>
+                            <input type="number" id="gradeAttendance" min="0" max="100">
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Save Grade</button>
+                            <button type="button" class="btn btn-secondary" onclick="closeAddGradeForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Grades Table -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Grade ID</th>
+                            <th>Student Name</th>
+                            <th>Course Name</th>
+                            <th>Midterm</th>
+                            <th>Final</th>
+                            <th>Assignment</th>
+                            <th>Attendance</th>
+                            <th>Overall Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradesTable">
+                        <tr>
+                            <td colspan="9" class="no-data">No grades found. Click "Add Grade" to get started.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/grades.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

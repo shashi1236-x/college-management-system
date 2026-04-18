@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Instructors - College Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/instructors.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>College Management System</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="students.html" class="nav-link">Students</a></li>
+                <li><a href="courses.html" class="nav-link">Courses</a></li>
+                <li><a href="instructors.html" class="nav-link active">Instructors</a></li>
+                <li><a href="enrollments.html" class="nav-link">Enrollments</a></li>
+                <li><a href="grades.html" class="nav-link">Grades</a></li>
+                <li><a href="reports.html" class="nav-link">Reports</a></li>
+                <li><a href="#" class="nav-link logout" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <h3>Quick Access</h3>
+                <a href="students.html" class="menu-item">
+                    <span class="icon">👥</span> Manage Students
+                </a>
+                <a href="courses.html" class="menu-item">
+                    <span class="icon">📚</span> Manage Courses
+                </a>
+                <a href="instructors.html" class="menu-item active">
+                    <span class="icon">👨‍🏫</span> Manage Instructors
+                </a>
+                <a href="enrollments.html" class="menu-item">
+                    <span class="icon">📝</span> Manage Enrollments
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>Instructor Management</h2>
+
+            <!-- Add Instructor Button -->
+            <div class="action-bar">
+                <button class="btn btn-primary" onclick="openAddInstructorForm()">+ Add New Instructor</button>
+                <input type="text" id="searchInput" placeholder="Search instructors..." class="search-box">
+            </div>
+
+            <!-- Add/Edit Instructor Form -->
+            <div id="instructorFormModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddInstructorForm()">&times;</span>
+                    <h3>Instructor Information</h3>
+                    <form onsubmit="submitInstructor(event)">
+                        <div class="form-group">
+                            <label for="instructorId">Instructor ID</label>
+                            <input type="text" id="instructorId" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorName">Name *</label>
+                            <input type="text" id="instructorName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorEmail">Email *</label>
+                            <input type="email" id="instructorEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorPhone">Phone *</label>
+                            <input type="tel" id="instructorPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorDepartment">Department *</label>
+                            <input type="text" id="instructorDepartment" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorQualification">Qualification</label>
+                            <input type="text" id="instructorQualification">
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorExperience">Experience (years)</label>
+                            <input type="number" id="instructorExperience" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorSpecialization">Specialization</label>
+                            <input type="text" id="instructorSpecialization">
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Save Instructor</button>
+                            <button type="button" class="btn btn-secondary" onclick="closeAddInstructorForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Instructors Table -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Instructor ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Department</th>
+                            <th>Qualification</th>
+                            <th>Experience</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="instructorsTable">
+                        <tr>
+                            <td colspan="8" class="no-data">No instructors found. Click "Add New Instructor" to get started.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/instructors.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

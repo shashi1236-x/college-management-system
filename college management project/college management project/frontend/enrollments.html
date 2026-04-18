@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Enrollments - College Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enrollments.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>College Management System</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="students.html" class="nav-link">Students</a></li>
+                <li><a href="courses.html" class="nav-link">Courses</a></li>
+                <li><a href="instructors.html" class="nav-link">Instructors</a></li>
+                <li><a href="enrollments.html" class="nav-link active">Enrollments</a></li>
+                <li><a href="grades.html" class="nav-link">Grades</a></li>
+                <li><a href="reports.html" class="nav-link">Reports</a></li>
+                <li><a href="#" class="nav-link logout" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <h3>Quick Access</h3>
+                <a href="students.html" class="menu-item">
+                    <span class="icon">👥</span> Manage Students
+                </a>
+                <a href="courses.html" class="menu-item">
+                    <span class="icon">📚</span> Manage Courses
+                </a>
+                <a href="instructors.html" class="menu-item">
+                    <span class="icon">👨‍🏫</span> Manage Instructors
+                </a>
+                <a href="enrollments.html" class="menu-item active">
+                    <span class="icon">📝</span> Manage Enrollments
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>Enrollment Management</h2>
+
+            <!-- Add Enrollment Button -->
+            <div class="action-bar">
+                <button class="btn btn-primary" onclick="openAddEnrollmentForm()">+ Add New Enrollment</button>
+                <input type="text" id="searchInput" placeholder="Search enrollments..." class="search-box">
+            </div>
+
+            <!-- Add/Edit Enrollment Form -->
+            <div id="enrollmentFormModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddEnrollmentForm()">&times;</span>
+                    <h3>Enrollment Information</h3>
+                    <form onsubmit="submitEnrollment(event)">
+                        <div class="form-group">
+                            <label for="enrollmentId">Enrollment ID</label>
+                            <input type="text" id="enrollmentId" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="enrollmentStudent">Student *</label>
+                            <select id="enrollmentStudent" required>
+                                <option value="">Select a student</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="enrollmentCourse">Course *</label>
+                            <select id="enrollmentCourse" required>
+                                <option value="">Select a course</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="enrollmentDate">Enrollment Date *</label>
+                            <input type="date" id="enrollmentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="enrollmentStatus">Status</label>
+                            <select id="enrollmentStatus">
+                                <option value="Active">Active</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Dropped">Dropped</option>
+                            </select>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Save Enrollment</button>
+                            <button type="button" class="btn btn-secondary" onclick="closeAddEnrollmentForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Enrollments Table -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Enrollment ID</th>
+                            <th>Student Name</th>
+                            <th>Course Name</th>
+                            <th>Enrollment Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enrollmentsTable">
+                        <tr>
+                            <td colspan="6" class="no-data">No enrollments found. Click "Add New Enrollment" to get started.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/enrollments.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
