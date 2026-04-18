@@ -1,18 +1,11 @@
 # Java
 *.class
 *.jar
-*.log
 bin/
-target/
 
 # IDE
 .vscode/
-.idea/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Temporary files
+# temp
 *.tmp
 *.new
